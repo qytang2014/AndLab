@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.my.lab">
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.android.my.lab.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.android.my.lab.message_mechanism.IndexActivity"
+            android:label="@string/message_queue_index" />
+        <activity
+            android:name="com.android.my.lab.message_mechanism.IncreaseUISmoothnessActivity"
+            android:label="@string/label_change_ui_smoothness" />
+        <activity
+            android:name="com.android.my.lab.message_mechanism.ChangeCallbackOrderActivity"
+            android:label="@string/label_change_callback_order" />
+        <activity
+            android:name="com.android.my.lab.message_mechanism.TempForCallbackOrderTestActivity"
+            android:label="@string/label_temp" />
+        <activity
+            android:name="com.android.my.lab.message_mechanism.SpeedupStartSpeedActivity"
+            android:label="@string/speed_up_start_speed" />
+        <activity android:name="com.android.my.lab.message_mechanism.TempForSpeedupTestActivity"></activity>
+    </application>
+
+</manifest>

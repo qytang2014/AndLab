@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AndLab</string>
+    <string name="message_queue_test">消息机制测试</string>
+    <string name="increase_ui_smoothness">改善ui流畅度</string>
+    <string name="change_callback_order">“改变”生命周期函数回调顺序</string>
+    <string name="message_queue_index">消息机制Index</string>
+    <string name="label_change_ui_smoothness">改善UI流畅度</string>
+    <string name="label_change_callback_order">\"改变\"生命周期函数回调顺序</string>
+    <string name="new_activity_callback_order">启动新Activity的生命周期函数调用顺序</string>
+    <string name="current_activity_normal">正常情况下的栈顶Activity：</string>
+    <string name="current_activity_changed">handler处理后的当前栈顶Activity：</string>
+    <string name="effect_of_getting_top_activity">对获取栈顶Activity的影响</string>
+    <string name="label_temp">TempForChangeCallbak</string>
+    <string name="speed_up_start_speed">加快界面启动速度</string>
+    <string name="start_normal">普通启动</string>
+    <string name="start_speed_up">加速启动</string>
+    <string name="no_improve">未改善效果</string>
+    <string name="improve">改善效果</string>
+</resources>

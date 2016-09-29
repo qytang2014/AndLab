@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/view_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_entity_in_collection_leak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/entity_in_collection_leak" />
+
+            <Button
+                android:id="@+id/btn_single_instance_leak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/single_instance_leak" />
+
+            <Button
+                android:id="@+id/btn_handler_leak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/handler_leak" />
+
+            <Button
+                android:id="@+id/btn_no_static_inner_class_leak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_static_inner_class_leak" />
+
+            <Button
+                android:id="@+id/btn_bitmap_leak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bitmap_leak" />
+
+            <ImageView
+                android:id="@+id/iv_bmp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

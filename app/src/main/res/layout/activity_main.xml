@@ -21,6 +21,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/message_queue_test" />
+
+            <Button
+                android:id="@+id/btn_goto_memory_leak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lab_memory_leak" />
         </LinearLayout>
     </ScrollView>
 

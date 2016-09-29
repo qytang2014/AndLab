@@ -16,4 +16,10 @@
     <string name="start_speed_up">加速启动</string>
     <string name="no_improve">未改善效果</string>
     <string name="improve">改善效果</string>
+    <string name="lab_memory_leak">内存泄漏</string>
+    <string name="entity_in_collection_leak">集合中实体的泄漏</string>
+    <string name="single_instance_leak">单例造成的泄漏</string>
+    <string name="no_static_inner_class_leak">非静态内部类泄漏</string>
+    <string name="handler_leak">Handler造成的泄漏</string>
+    <string name="bitmap_leak">Bitmap泄漏</string>
 </resources>

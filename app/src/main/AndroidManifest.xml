@@ -34,6 +34,9 @@
             android:name="com.android.my.lab.message_mechanism.SpeedupStartSpeedActivity"
             android:label="@string/speed_up_start_speed" />
         <activity android:name="com.android.my.lab.message_mechanism.TempForSpeedupTestActivity"></activity>
+        <activity
+            android:name="com.android.my.lab.memory_leak.MemoryLeakIndexActivity"
+            android:label="@string/lab_memory_leak" />
     </application>
 
 </manifest>

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.android.my.lab.memory_leak.MemoryLeakIndexActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -30,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 gotoXXXTest(com.android.my.lab.message_mechanism.IndexActivity.class);
+            }
+        });
+
+        findViewById(R.id.btn_goto_memory_leak).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoXXXTest(MemoryLeakIndexActivity.class);
             }
         });
     }

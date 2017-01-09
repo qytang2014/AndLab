@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_activie_android_test"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.android.my.lab.active_android.ActiveAndroidTestActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,23 +20,19 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_goto_message_mechanism"
+                android:id="@+id/btn_modify_table_struct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/message_queue_test" />
+                android:text="@string/modify_table_struct_test" />
 
-            <Button
-                android:id="@+id/btn_goto_memory_leak"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lab_memory_leak" />
+                android:text="结论：表中如果新增了字段则除了增加数据库版本外，还需要修改数据库的脚本；
+                \n只是修改已有表名或者字段名或者新增一个表，则只需要增加版本;
+                \n如果没有表没初始化则会报java.lang.NullPointerException at com.activeandroid.Cache.getTableName(Cache.java:156)
+"/>
 
-            <Button
-                android:id="@+id/btn_goto_active_android_test"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lab_active_android" />
         </LinearLayout>
     </ScrollView>
-
 </RelativeLayout>

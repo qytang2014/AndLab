@@ -14,5 +14,6 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         LeakCanary.install(this);
+        //ActiveAndroid.initialize(this);
     }
 }

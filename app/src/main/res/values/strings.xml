@@ -22,4 +22,6 @@
     <string name="no_static_inner_class_leak">非静态内部类泄漏</string>
     <string name="handler_leak">Handler造成的泄漏</string>
     <string name="bitmap_leak">Bitmap泄漏</string>
+    <string name="lab_active_android">ActiveAndroid测试</string>
+    <string name="modify_table_struct_test">修改表结构测试</string>
 </resources>

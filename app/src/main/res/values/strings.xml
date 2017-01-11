@@ -24,4 +24,9 @@
     <string name="bitmap_leak">Bitmap泄漏</string>
     <string name="lab_active_android">ActiveAndroid测试</string>
     <string name="modify_table_struct_test">修改表结构测试</string>
+    <string name="lab_wifip2p">wifi直连</string>
+    <string name="discover_peers">搜索peers</string>
+    <string name="text_discovering_peers">正在搜索peers...</string>
+    <string name="lab_lan">局域网</string>
+    <string name="discover_ip">扫描局域网中设备ip</string>
 </resources>

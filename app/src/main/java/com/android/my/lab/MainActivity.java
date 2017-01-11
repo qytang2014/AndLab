@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.android.my.lab.active_android.ActiveAndroidTestActivity;
+import com.android.my.lab.lan.LANTestActivity;
 import com.android.my.lab.memory_leak.MemoryLeakIndexActivity;
+import com.android.my.lab.wifip2p.WifiP2pTestActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,6 +49,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 gotoXXXTest(ActiveAndroidTestActivity.class);
+            }
+        });
+
+        findViewById(R.id.btn_goto_wifip2p_test).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoXXXTest(WifiP2pTestActivity.class);
+            }
+        });
+
+        findViewById(R.id.btn_goto_lan_test).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoXXXTest(LANTestActivity.class);
             }
         });
     }

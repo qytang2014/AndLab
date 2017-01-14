@@ -45,6 +45,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/lab_lan" />
+
+            <Button
+                android:id="@+id/btn_goto_lan_live_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lab_lan_live" />
         </LinearLayout>
     </ScrollView>
 

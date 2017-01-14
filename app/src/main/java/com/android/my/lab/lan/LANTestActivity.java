@@ -48,7 +48,7 @@ public class LANTestActivity extends AppCompatActivity implements NFCHelper.OnCo
         mBtnDiscoverIp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mNFCHelper.connectNFCServer();
+                mNFCHelper.connectNFCServer("10019");
             }
         });
 

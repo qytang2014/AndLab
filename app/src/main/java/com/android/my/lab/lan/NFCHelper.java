@@ -19,9 +19,9 @@ import java.util.Enumeration;
 public class NFCHelper {
     private static final String TAG = "NFCHelper";
     private static final int SERVER_PORT = 9527;
-    private static final String MSG_NFC_IDENTIFY_REQUEST = "XP://NFC/IDENTIFY";
-    private static final String MSG_NFC_IDENTIFY_RESPONSE = "XP://NFC/IDENTIFY/SUCCESS";
-    private static final String MSG_NFC_CLOSE = "XP://NFC/CLOSE";
+    private static final String MSG_NFC_IDENTIFY_REQUEST = "XP://NFC/IDENTIFY/%s";
+    private static final String MSG_NFC_IDENTIFY_SUCCESS = "XP://NFC/IDENTIFY/SUCCESS";
+    private static final String MSG_NFC_IDENTIFY_FAIL = "XP://NFC/IDENTIFY/FAIL";
 
     private String locAddress;//存储本机ip，例：本地ip ：192.168.1.
     private Runtime run = Runtime.getRuntime();//获取当前运行环境，来执行ping，相当于windows的cmd
@@ -30,6 +30,7 @@ public class NFCHelper {
     private int mLastAddrOfIp;//存放ip最后一位地址 0-255
     private Context mContext;
     private Socket mClientSocket;
+    private String mIdentifyFlag;
     private OnReceiveListener mOnReceiveListener;
     private OnConnectListener mOnConnectListener;
 
@@ -37,7 +38,8 @@ public class NFCHelper {
         this.mContext = ctx;
     }
 
-    public void connectNFCServer() {
+    public void connectNFCServer(String id) {
+        mIdentifyFlag = String.format(MSG_NFC_IDENTIFY_REQUEST, id);
         final String serverIp = SharedPreferenceHelper.getInstance(mContext).getNFCServerIp();
         Log.d(TAG, "serverIp-->" + serverIp);
         if (TextUtils.isEmpty(serverIp)) {
@@ -46,7 +48,7 @@ public class NFCHelper {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    identifyAndReadMsgFromServer(true, serverIp, MSG_NFC_IDENTIFY_REQUEST);
+                    identifyAndReadMsgFromServer(true, serverIp, mIdentifyFlag);
                 }
             }).start();
         }
@@ -74,7 +76,7 @@ public class NFCHelper {
                         if (result == 0) {
                             Log.d(TAG, "Ping成功：" + currentIp);
                             // 向服务器发送验证信息
-                            identifyAndReadMsgFromServer(false, currentIp, MSG_NFC_IDENTIFY_REQUEST);
+                            identifyAndReadMsgFromServer(false, currentIp, mIdentifyFlag);
                         } else {
                             Log.d(TAG, "Ping失败：" + currentIp);
                         }
@@ -110,20 +112,20 @@ public class NFCHelper {
                 Log.d(TAG, "Reading from Server");
                 String msgFromServer = in.readLine();
                 Log.d(TAG, "msgFromServer-->" + msgFromServer);
-                if (!TextUtils.isEmpty(msgFromServer) && msgFromServer.equals(MSG_NFC_IDENTIFY_RESPONSE)) {
-                    mClientSocket = socket;
-                    SharedPreferenceHelper.getInstance(mContext).setNFCServerIp(ip);
-                    if (mOnConnectListener != null) {
-                        mOnConnectListener.onConnect();
+                if (!TextUtils.isEmpty(msgFromServer)) {
+                    if (msgFromServer.equals(MSG_NFC_IDENTIFY_SUCCESS)) {
+                        mClientSocket = socket;
+                        SharedPreferenceHelper.getInstance(mContext).setNFCServerIp(ip);
+                        if (mOnConnectListener != null) {
+                            mOnConnectListener.onConnect();
+                        }
+                    } else if (msgFromServer.equals(MSG_NFC_IDENTIFY_FAIL)) {
+                        break;
+                    } else {
+                        if (mOnReceiveListener != null) {
+                            mOnReceiveListener.onReceive(msgFromServer);
+                        }
                     }
-                } else {
-                    if (mOnReceiveListener != null) {
-                        mOnReceiveListener.onReceive(msgFromServer);
-                    }
-                }
-
-                if (msgFromServer.equals("End")) {
-                    break;
                 }
 
             }
@@ -198,9 +200,7 @@ public class NFCHelper {
 
     //获取IP前缀
     public String getLocAddrIndex() {
-
         String str = getDeviceIp();
-
         if (!str.equals("")) {
             return str.substring(0, str.lastIndexOf(".") + 1);
         }

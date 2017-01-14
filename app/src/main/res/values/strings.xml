@@ -29,4 +29,5 @@
     <string name="text_discovering_peers">正在搜索peers...</string>
     <string name="lab_lan">局域网</string>
     <string name="discover_ip">扫描局域网中设备ip</string>
+    <string name="lab_lan_live">局域网视频直播</string>
 </resources>

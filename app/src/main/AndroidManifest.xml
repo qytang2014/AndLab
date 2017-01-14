@@ -13,6 +13,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -52,6 +58,13 @@
         <activity
             android:name=".lan.LANTestActivity"
             android:label="@string/lab_lan" />
+        <activity
+            android:name=".lan_live.LanLiveTestActivity"
+            android:label="@string/lab_lan_live" />
+        <activity android:name=".lan_live.ServerActivity" />
+        <activity android:name=".lan_live.ClientActivity" />
+
+        <service android:name="net.majorkernelpanic.streaming.rtsp.RtspServer" />
 
         <meta-data
             android:name="AA_DB_NAME"

@@ -2,6 +2,7 @@ package com.android.my.lab.lan;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -13,7 +14,8 @@ import com.android.my.lab.R;
 /*
 * 局域网测试：获取局域网中设备的ip地址、mac地址等
 * */
-public class LANTestActivity extends AppCompatActivity implements NFCHelper.OnConnectListener, NFCHelper.OnReceiveListener {
+public class LANTestActivity extends AppCompatActivity implements NFCHelper.OnConnectListener,
+        NFCHelper.OnReceiveListener, NFCHelper.OnFileTransferReadyListener {
     private static final String TAG = "LANTestActivity";
 
     private ViewGroup mViewContainer;
@@ -21,7 +23,8 @@ public class LANTestActivity extends AppCompatActivity implements NFCHelper.OnCo
     private TextView mTvState;
     private EditText mEtMsg;
     private Button mBtnSend;
-    private Button mClose;
+    private Button mBtnClose;
+    private Button mBtnTransferFile;
 
     private NFCHelper mNFCHelper;
 
@@ -41,7 +44,8 @@ public class LANTestActivity extends AppCompatActivity implements NFCHelper.OnCo
         mTvState = (TextView) findViewById(R.id.tv_state);
         mEtMsg = (EditText) findViewById(R.id.et_msg);
         mBtnSend = (Button) findViewById(R.id.btn_send);
-        mClose = (Button) findViewById(R.id.btn_close);
+        mBtnClose = (Button) findViewById(R.id.btn_close);
+        mBtnTransferFile = (Button) findViewById(R.id.btn_transfer_file);
     }
 
     private void setViewListener() {
@@ -59,15 +63,23 @@ public class LANTestActivity extends AppCompatActivity implements NFCHelper.OnCo
             }
         });
 
-        mClose.setOnClickListener(new View.OnClickListener() {
+        mBtnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mNFCHelper.closeNFC();
             }
         });
 
+        mBtnTransferFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mNFCHelper.requestFileTransfer();
+            }
+        });
+
         mNFCHelper.setOnConnectListener(this);
         mNFCHelper.setOnReceiveListener(this);
+        mNFCHelper.setOnFileTransferReadyListener(this);
     }
 
     @Override
@@ -88,5 +100,11 @@ public class LANTestActivity extends AppCompatActivity implements NFCHelper.OnCo
                 mTvState.setText(msg + "");
             }
         });
+    }
+
+    @Override
+    public void onFileTransferReady() {
+        Log.d(TAG, "onFileTransferReady");
+        mNFCHelper.transferFile("/mnt/sdcard/Music/my_music");
     }
 }

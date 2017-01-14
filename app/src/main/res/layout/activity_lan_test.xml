@@ -49,6 +49,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Close" />
+
+            <Button
+                android:id="@+id/btn_transfer_file"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Transfer File" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
